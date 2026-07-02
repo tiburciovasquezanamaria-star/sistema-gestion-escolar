@@ -1,0 +1,6 @@
+C:\Users\anati\Desktop\Proyectos\sistema-gestion-escolar\src\src\components
+C:\Users\anati\Desktop\Proyectos\sistema-gestion-escolar\src\src\layouts
+C:\Users\anati\Desktop\Proyectos\sistema-gestion-escolar\src\src\pages
+C:\Users\anati\Desktop\Proyectos\sistema-gestion-escolar\src\src\routes
+C:\Users\anati\Desktop\Proyectos\sistema-gestion-escolar\src\src\services
+C:\Users\anati\Desktop\Proyectos\sistema-gestion-escolar\src\src\components\Sidebar.jsx
