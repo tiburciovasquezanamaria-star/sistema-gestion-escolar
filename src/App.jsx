@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Login from "./Login";
 import Register from "./Register";
 import Dashboard from "./Dashboard";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/grades" element={<Grades />} />
     
       </Routes>
+      <SpeedInsights />
     </BrowserRouter>
   );
 }
