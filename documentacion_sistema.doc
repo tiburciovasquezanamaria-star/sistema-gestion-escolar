@@ -1,0 +1,267 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' 
+      xmlns:w='urn:schemas-microsoft-com:office:word' 
+      xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+  <title>Documentación del Sistema de Gestión Escolar</title>
+  <meta charset="utf-8">
+  <!--[if gte mso 9]>
+  <xml>
+    <w:WordDocument>
+      <w:View>Print</w:View>
+      <w:Zoom>100</w:Zoom>
+      <w:DoNotOptimizeForBrowser/>
+    </w:WordDocument>
+  </xml>
+  <![endif]-->
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      padding: 20px;
+    }
+    h1 {
+      color: #be185d;
+      border-bottom: 2px solid #be185d;
+      padding-bottom: 8px;
+      font-size: 24pt;
+      margin-top: 24pt;
+      font-family: 'Segoe UI Semibold', sans-serif;
+    }
+    h2 {
+      color: #7c3aed;
+      margin-top: 20pt;
+      font-size: 16pt;
+      font-family: 'Segoe UI Semibold', sans-serif;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 4px;
+    }
+    h3 {
+      color: #0d9488;
+      font-size: 13pt;
+      margin-top: 14pt;
+      font-family: 'Segoe UI Semibold', sans-serif;
+    }
+    p, li {
+      font-size: 11pt;
+      text-align: justify;
+    }
+    ul, ol {
+      margin-top: 5pt;
+      margin-bottom: 5pt;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15pt 0;
+    }
+    th, td {
+      border: 1px solid #cccccc;
+      padding: 10px;
+      text-align: left;
+      font-size: 10.5pt;
+    }
+    th {
+      background-color: #f3f4f6;
+      font-weight: bold;
+      color: #111111;
+    }
+    .badge {
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 9pt;
+      display: inline-block;
+    }
+    .badge-rose { background-color: #fce7f3; color: #be185d; }
+    .badge-violet { background-color: #f3e8ff; color: #7c3aed; }
+    .badge-teal { background-color: #ccfbf1; color: #0d9488; }
+    .footer-doc {
+      margin-top: 40pt;
+      border-top: 1px solid #dddddd;
+      padding-top: 10px;
+      font-size: 9pt;
+      color: #666666;
+      text-align: center;
+    }
+    .alert-box {
+      background-color: #fef2f2;
+      border-left: 4px solid #ef4444;
+      padding: 12px;
+      margin: 10pt 0;
+      border-radius: 4px;
+    }
+    .alert-title {
+      font-weight: bold;
+      color: #991b1b;
+      margin-bottom: 4px;
+      font-size: 11pt;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="text-align: center; padding: 40px 0;">
+    <h1 style="border: none; color: #be185d; font-size: 28pt; margin-bottom: 10px;">SISTEMA DE GESTIÓN ESCOLAR</h1>
+    <h2 style="border: none; color: #555555; font-size: 16pt; margin-top: 0;">Manual de Documentación Técnica e Infraestructura</h2>
+    <p style="text-align: center; color: #777777; font-size: 12pt; margin-top: 20px;">
+      Diseñado para la Administración y Control Académico de Centros Educativos<br>
+      <strong>Versión 2.0 (Edición Segura con JWT y Base de Datos MySQL)</strong>
+    </p>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid #eeeeee; margin: 30px 0;">
+
+  <h1>1. Introducción y Arquitectura General</h1>
+  <p>
+    Esta documentación detalla los componentes añadidos, las mejoras en la infraestructura y las funcionalidades de seguridad implementadas en el <strong>Sistema de Gestión Escolar</strong>. El sistema ha sido transformado desde un modelo estático y de pruebas a una plataforma web responsiva, robusta y con persistencia real en base de datos <strong>MySQL (vía XAMPP)</strong>.
+  </p>
+  <p>El sistema cuenta con una arquitectura dividida en dos capas principales:</p>
+  <ul>
+    <li><strong>Frontend (Cliente):</strong> Desarrollado en React.js, estructurado mediante Vite para compilación ultrarrápida. Ofrece una interfaz de usuario fluida, animada y responsiva con una estética corporativa premium orientada a la elegancia y precisión.</li>
+    <li><strong>Backend (Servidor):</strong> Desarrollado en Node.js utilizando Express.js. Gestiona todas las conexiones del cliente hacia la base de datos local y provee endpoints seguros mediante tokens cifrados.</li>
+  </ul>
+
+  <h2>1.1 Tecnologías y Librerías Añadidas</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%">Tecnología</th>
+        <th style="width: 25%">Módulo / Librería</th>
+        <th>Propósito en el Sistema</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Seguridad Backend</strong></td>
+        <td><code>jsonwebtoken (JWT)</code></td>
+        <td>Generación y verificación de tokens de acceso para sesiones seguras de 8 horas.</td>
+      </tr>
+      <tr>
+        <td><strong>Criptografía</strong></td>
+        <td><code>bcrypt</code></td>
+        <td>Encriptación unidireccional de contraseñas con algoritmo de sal (12 rondas).</td>
+      </tr>
+      <tr>
+        <td><strong>Protección Web</strong></td>
+        <td><code>helmet</code></td>
+        <td>Establecimiento de cabeceras HTTP seguras para mitigar ataques XSS y Clickjacking.</td>
+      </tr>
+      <tr>
+        <td><strong>Control de Tráfico</strong></td>
+        <td><code>express-rate-limit</code></td>
+        <td>Prevención de ataques de fuerza bruta limitando intentos de login a 20 peticiones por 15 minutos.</td>
+      </tr>
+      <tr>
+        <td><strong>Persistencia Local</strong></td>
+        <td><code>mysql2 (Promise)</code></td>
+        <td>Controlador nativo para consultas asíncronas de base de datos MySQL.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1>2. Autenticación y Control de Acceso (JWT)</h1>
+  <p>
+    El sistema implementa un esquema de seguridad industrial basado en tokens <strong>JSON Web Tokens (JWT)</strong>. Las credenciales quemadas en código han sido completamente eliminadas.
+  </p>
+
+  <h2>2.1 Registro e Inicio de Sesión Seguro</h2>
+  <p>
+    Cuando el usuario ingresa sus credenciales en la pantalla de Login, se ejecuta el siguiente flujo de seguridad:
+  </p>
+  <ol>
+    <li>El servidor busca al usuario en la tabla <code>usuarios</code> en estado activo.</li>
+    <li>Se compara la contraseña ingresada con el hash guardado mediante <code>bcrypt.compare()</code>.</li>
+    <li>Si las credenciales coinciden, el servidor genera un token JWT firmado digitalmente con una palabra secreta única del sistema (<code>JWT_SECRET</code>).</li>
+    <li>El token contiene la información del usuario encriptada (ID, nombre, rol y cargo).</li>
+    <li>El cliente guarda este token en el <code>sessionStorage</code> del navegador.</li>
+  </ol>
+
+  <div class="alert-box">
+    <div class="alert-title">🔒 Datos del Usuario por Defecto</div>
+    <p style="margin: 0; font-size: 10pt;">
+      El sistema cuenta con un usuario administrador pre-creado en la base de datos para el primer acceso:<br>
+      <strong>Usuario:</strong> <code>admin</code><br>
+      <strong>Contraseña por defecto:</strong> <code>Admin2026!</code><br>
+      <em>Nota: Puede cambiar esta contraseña en cualquier momento desde el Módulo de Configuración.</em>
+    </p>
+  </div>
+
+  <h2>2.2 Guardianes de Ruta (PrivateRoute)</h2>
+  <p>
+    En el frontend, se implementó el componente <code>PrivateRoute.jsx</code>. Este componente envuelve todos los módulos administrativos. Si un usuario intenta acceder directamente escribiendo la URL del sistema en la barra de direcciones (por ejemplo, <code>/dashboard</code> o <code>/settings</code>) sin haber iniciado sesión previamente, el guardián intercepta la petición y lo redirige automáticamente al Login.
+  </p>
+
+  <h1>3. Nuevos Módulos Añadidos</h1>
+
+  <h2>3.1 Módulo de Asistencia Diaria (Inicial a 6to Grado)</h2>
+  <p>
+    Es una de las principales adiciones solicitadas por la institución. Permite la toma de asistencia diaria de forma automatizada por grado y sección.
+  </p>
+  <h3>Características Principales:</h3>
+  <ul>
+    <li><strong>Filtros Avanzados:</strong> Selección dinámica de la Fecha del pase de lista, Curso/Grado (desde Inicial hasta 6to Grado) y Secciones (A, B y C).</li>
+    <li><strong>Asociación de Docentes:</strong> Selector dinámico que lista a los profesores activos en el centro escolar para asignar al responsable del pase de lista del aula.</li>
+    <li><strong>Estados de Asistencia:</strong> Marcación ágil mediante botones interactivos de <strong>P</strong> (Presente), <strong>A</strong> (Ausente), <strong>T</strong> (Tardanza) y <strong>E</strong> (Excusa).</li>
+    <li><strong>Indicadores Demográficos en Tiempo Real:</strong> Muestra en la cabecera del módulo un desglose de asistencia por sexo (Femenino / Masculino), calculando al instante cuántas alumnas y alumnos están presentes.</li>
+    <li><strong>Persistencia Inteligente (UPSERT):</strong> Si se pasa la lista del mismo curso y sección en la misma fecha, el sistema actualiza el registro existente en lugar de duplicarlo, manteniendo la base de datos limpia.</li>
+  </ul>
+
+  <h2>3.2 Módulo de Configuración del Sistema (Settings)</h2>
+  <p>
+    Permite centralizar y personalizar los parámetros del centro educativo y la cuenta del administrador. Se compone de tres pestañas principales:
+  </p>
+  <ul>
+    <li><strong>🏫 Centro Educativo:</strong> Edición de los datos de la escuela (Nombre oficial, Dirección, Teléfono con validación de formato dominicano, Código de registro MINERD, Año Escolar activo y Nombre/Cargo de la Directora).</li>
+    <li><strong>🔐 Seguridad:</strong> Formulario de cambio de contraseña que solicita la clave actual y valida la fortaleza de la nueva contraseña (requiere mínimo 6 caracteres, números y letras mayúsculas).</li>
+    <li><strong>👤 Perfil del Sistema:</strong> Muestra el perfil del administrador activo y un botón para cerrar sesión de manera segura limpiando los datos de navegación.</li>
+  </ul>
+
+  <h1>4. Módulo de Reportes y Carga Docente</h1>
+  <p>
+    El módulo de reportes ha sido optimizado con analíticas avanzadas conectadas a la base de datos MySQL local y capacidad de exportación profesional.
+  </p>
+
+  <h2>4.1 Pestaña "Carga Docente" Mejorada</h2>
+  <p>
+    Esta sección ahora muestra información y datos de valor académico de forma interactiva:
+  </p>
+  <ul>
+    <li><strong>Gráfico de Carga Académica:</strong> Visualización de las horas semanales planificadas por cada profesor en el centro mediante un gráfico de barras interactivo de Chart.js.</li>
+    <li><strong>Listado e Indicador de Carga Promedio:</strong> Promedio real de horas de clases por docente activo en el centro educativo.</li>
+    <li><strong>🚨 Alerta de Sobrecarga:</strong> El sistema identifica automáticamente si un docente excede las 40 horas académicas semanales contratadas y lo resalta en color rojo como alerta de prevención.</li>
+    <li><strong>💡 Disponibilidad de Horas:</strong> Muestra la capacidad disponible de docentes con menos de 30 horas semanales para asignación de nuevos cursos o tutorías de manera óptima.</li>
+  </ul>
+
+  <h2>4.2 Exportación e Impresión</h2>
+  <p>
+    Permite generar reportes en formato <strong>PDF</strong> utilizando la librería <code>jspdf</code>, organizando la información general, detalles de carga docente y conclusiones en un formato formal imprimible.
+  </p>
+
+  <h1>5. Diseño, Contraste y Adaptabilidad Móvil (Responsividad)</h1>
+  <p>
+    Para garantizar que la plataforma sea viable y operable en el día a día, se adaptó la interfaz a las directrices de accesibilidad y visualización en cualquier dispositivo.
+  </p>
+
+  <h2>5.1 Adaptabilidad a Dispositivos (Móviles, Tablets y PC)</h2>
+  <p>
+    El diseño del sistema es completamente responsivo. En pantallas de computadoras de escritorio se muestra la barra lateral extendida y el panel en columnas amplias. Cuando se visualiza en teléfonos o tablets:
+  </p>
+  <ul>
+    <li>La barra lateral se pliega a una sección superior/inferior compacta y horizontal.</li>
+    <li>El menú de navegación se transforma en una tira de botones <strong>touch-scrollable</strong> con deslizamiento horizontal suave. Esto evita que los botones se encimen o deformen la pantalla en celulares.</li>
+    <li>Los formularios y tarjetas del Dashboard se apilan en una sola columna vertical fluida para una lectura cómoda sin necesidad de hacer zoom.</li>
+  </ul>
+
+  <h2>5.2 Legibilidad y Alto Contraste (Cumplimiento WCAG)</h2>
+  <p>
+    Se optimizó la paleta de colores corporativa (tonalidad Rose, Mauve, Gold, Teal) con ajustes específicos de contraste. El color del texto secundario de los módulos, subtítulos de login y píldoras inactivas fue oscurecido a un tono pizarra (<code>hsl(260, 25%, 32%)</code>), garantizando un índice de contraste superior a <strong>6.5:1</strong> sobre fondos claros, facilitando su uso para personas con fatiga visual.
+  </p>
+
+  <div class="footer-doc">
+    Documento Generado por el Sistema de Gestión Escolar v2.0<br>
+    Copyright &copy; 2026. Todos los derechos reservados.
+  </div>
+
+</body>
+</html>
