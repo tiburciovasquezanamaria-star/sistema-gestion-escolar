@@ -12,6 +12,7 @@
     "start:all": "concurrently --kill-others-on-fail --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,magenta\" \"cd server && node server.js\" \"vite\""
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "axios": "^1.18.1",
     "bcrypt": "^6.0.0",
     "chart.js": "^4.5.1",
