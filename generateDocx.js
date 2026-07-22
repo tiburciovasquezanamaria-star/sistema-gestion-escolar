@@ -397,6 +397,14 @@ async function generate() {
           createBodyParagraph("• Pasos para Reproducir: Acceder al módulo 'Cursos y Secciones' y verificar la columna 'Inscritos'."),
           createBodyParagraph("• Evidencia: La columna en MySQL se llama 'capacidad' pero el frontend esperaba el campo 'inscritos'. El controlador devolvía el nombre original de la BD sin renombrar."),
           createBodyParagraph("• Corrección Aplicada: Se actualizó courseController.js para mapear capacidad → inscritos en todas las respuestas JSON del endpoint GET /api/courses. Adicionalmente, se creó el endpoint GET /api/courses/seccion-cupos que lee directamente desde la tabla estudiantes para mayor precisión."),
+          createSpacing(1)[0],
+
+          createBodyParagraph("[Defecto-05]: Entradas de texto manuales en lugar de menús desplegables select y desincronización de repositorio/despliegue", false, true),
+          createBodyParagraph("• Severidad: Alta (Divergencia entre repositorio local y entorno de producción en Vercel/Render, e inconsistencia de datos al ingresar materias y docentes manualmente)."),
+          createBodyParagraph("• Pasos para Reproducir: (1) Ingresar a Calificaciones o Cursos e intentar seleccionar materia o docente encargado. (2) Verificar repositorio GitHub origin/main."),
+          createBodyParagraph("• Evidencia: Los formularios usaban entradas de texto libre que permitían errores de sintaxis y el despliegue no reflejaba los últimos commits locales."),
+          createBodyParagraph("• Corrección Aplicada: (1) Se transformaron los campos de Materia y Docente Encargado en elementos <select> poblados dinámicamente desde la base de datos en Grades.jsx, Courses.jsx y Attendance.jsx. (2) Se realizó git merge, git commit y git push origin main, reactivando los despliegues automáticos en Vercel y Render."),
+          createSpacing(1)[0],
 
           // ─── SECCIÓN 5: CONCLUSIÓN ───
           createHeading("5. Conclusión", HeadingLevel.HEADING_1),
