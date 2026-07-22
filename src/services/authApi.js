@@ -1,12 +1,17 @@
-const API_URL = import.meta.env.VITE_API_URL || "https://sistema-gestion-escolar.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "https://tame-worlds-dress.loca.lt";
 const API_BASE = `${API_URL}/api`;
+
+const defaultHeaders = {
+  "Content-Type": "application/json",
+  "Bypass-Tunnel-Reminder": "true"
+};
 
 // ─── Authentication ─────────────────────────────────────────────────────────
 
 export async function login(usuario, password) {
   const res = await fetch(`${API_BASE}/auth/login`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: defaultHeaders,
     body: JSON.stringify({ usuario, password }),
   });
   return res.json();
