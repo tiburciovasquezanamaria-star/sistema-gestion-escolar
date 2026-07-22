@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "https://tame-worlds-dress.loca.lt";
+const API_URL = import.meta.env.VITE_API_URL || "https://sistema-escolar-ana-tiburcio.loca.lt";
 
 const requestJson = async (url, options = {}) => {
   const token = sessionStorage.getItem("sge_token");
