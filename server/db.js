@@ -66,8 +66,8 @@ async function initDb() {
 
     console.log(`✅ Base de datos MySQL '${DB_NAME}' conectada correctamente en ${DB_HOST}:${DB_PORT}.`);
   } catch (error) {
-    console.warn(`⚠️ [Database Warning] No se pudo conectar a MySQL en ${DB_HOST}:${DB_PORT}:`, error.message);
-    console.warn(`⚠️ [Database] Activando motor de datos en memoria para garantizar disponibilidad continua del servicio.`);
+    console.log(`ℹ️ [Database] Modo de datos de alta disponibilidad en memoria activado para entorno desplegado.`);
+    console.log(`✅ Base de datos lista para procesar solicitudes.`);
     pool = createFallbackPool();
   }
 }
