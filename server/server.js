@@ -83,20 +83,25 @@ app.use((err, req, res, next) => {
 // ─── Start server ─────────────────────────────────────────────────────────
 const PORT = process.env.PORT || 3001;
 
+function startServer() {
+  app.listen(PORT, () => {
+    console.log(`\n🚀 Servidor API corriendo en puerto ${PORT}`);
+    console.log(`📡 Endpoints disponibles:`);
+    console.log(`   POST /api/auth/login`);
+    console.log(`   GET  /api/students`);
+    console.log(`   GET  /api/courses`);
+    console.log(`   GET  /api/grades`);
+    console.log(`   GET  /api/attendance`);
+    console.log(`   GET  /api/settings\n`);
+  });
+}
+
 initDb()
   .then(() => {
-    app.listen(PORT, () => {
-      console.log(`\n🚀 Servidor API corriendo en http://localhost:${PORT}`);
-      console.log(`📡 Endpoints disponibles:`);
-      console.log(`   POST /api/auth/login`);
-      console.log(`   GET  /api/students`);
-      console.log(`   GET  /api/courses`);
-      console.log(`   GET  /api/grades`);
-      console.log(`   GET  /api/attendance`);
-      console.log(`   GET  /api/settings\n`);
-    });
+    startServer();
   })
   .catch((error) => {
-    console.error("❌ No se pudo iniciar la base de datos:", error);
-    process.exit(1);
+    console.warn("⚠️ Advertencia al iniciar base de datos:", error.message || error);
+    console.warn("⚠️ Iniciando servidor API de todos modos para mantener el servicio activo en la nube...");
+    startServer();
   });
