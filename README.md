@@ -1,21 +1,80 @@
-<<<<<<< HEAD
-# React + Vite
+# Sistema de Gestión Escolar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema de Gestión Escolar es una aplicación web de administración educativa con una interfaz femenina, moderna y funcional. Permite:
 
-Currently, two official plugins are available:
+- registrar y listar estudiantes
+- gestionar cursos y horarios
+- revisar calificaciones
+- generar reportes visuales básicos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Cómo ejecutar el proyecto
 
-## React Compiler
+### 1. Instalar dependencias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+En la carpeta principal:
 
-## Expanding the ESLint configuration
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# sistema-gestion-escolar
-Sistema de Gestión Escolar es una aplicación desarrollada para facilitar la administración de estudiantes, docentes y procesos académicos dentro de una institución educativa. Permite gestionar información de forma organizada, mejorar el control de datos y optimizar las tareas administrativas mediante una interfaz intuitiva y funcional.
->>>>>>> 13afbb6bb1df9d41e7fe148933e8524cb32b8b26
+### 2. Iniciar el servidor de desarrollo
+
+```bash
+npm run dev
+```
+
+### 3. Abrir en el navegador
+
+Visita `http://localhost:5173`
+
+## Backend en memoria
+
+El proyecto incluye una API simple en `server/` que maneja:
+
+- `GET /api/students`
+- `POST /api/students`
+- `DELETE /api/students/:id`
+
+Para ejecutar el servidor backend, abre otra terminal y usa:
+
+```bash
+cd server
+npm install
+npm start
+```
+
+> Nota: la API de estudiantes está en memoria, por lo que los datos se pierden al reiniciar el servidor.
+
+## Build de producción
+
+Para generar archivos listos para producción:
+
+```bash
+npm run build
+```
+
+## Estado actual
+
+- interfaz lista y funcional
+- navegación completa entre páginas
+- reporte con gráfico de notas
+- estudiantes con registro y eliminación
+- build de producción verificado exitosamente
+
+## Archivos clave
+
+- `src/App.jsx` — rutas de la aplicación
+- `src/pages/Students.jsx` — gestión de estudiantes
+- `src/pages/Courses.jsx` — información de cursos
+- `src/pages/Grades.jsx` — visualización de notas
+- `src/pages/Reports.jsx` — reportes con gráfico
+- `src/styles.css` — estilo femenino y responsive
+- `server/server.js` — backend Express
+
+## Cómo presentar el demo
+
+1. Muestra la página de inicio y el diseño femenino.
+2. Entra a Estudiantes y crea un alumno nuevo.
+3. Abre Reportes para enseñar el gráfico de notas y las métricas.
+4. Resalta que el backend funciona con API REST y que se puede convertir en base de datos real.
+5. Termina diciendo que ya está en build listo para producción con `npm run build`.
